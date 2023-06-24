@@ -2,6 +2,7 @@ package com.example.viaJava.models;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,9 +16,10 @@ import java.time.Instant;
 public class ItemTodo implements Serializable {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotBlank(message = "É necessário uma descrição!")
     private String description;
     private Boolean isComplete;
     private Instant createdAt;

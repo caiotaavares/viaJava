@@ -5,7 +5,6 @@ import com.example.viaJava.repositories.ItemTodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.time.Instant;
 import java.util.Optional;
 
@@ -23,13 +22,13 @@ public class ItemTodoServices {
         return itemTodoRepository.findById(id);
     }
 
-    public ItemTodo save(ItemTodo item) {
+    public void save(ItemTodo item) {
         if (item.getId() == null) {
             item.setCreatedAt(Instant.now());
         }
 
         item.setUpdatedAt(Instant.now());
-        return itemTodoRepository.save(item);
+        itemTodoRepository.save(item);
     }
 
     public void delete(ItemTodo item) {
