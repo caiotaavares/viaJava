@@ -21,7 +21,7 @@ public class ItemTodo implements Serializable {
 
     @NotBlank(message = "É necessário uma descrição!")
     private String description;
-    private Boolean isComplete;
+    private Boolean isComplete = false;
     private Instant createdAt;
     private Instant updatedAt;
 
