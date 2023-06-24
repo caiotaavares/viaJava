@@ -25,15 +25,26 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="item : ${items}">
+        <tr th:each="item : ${todoItems}" th:class="${item.isComplete} ? 'alert alert-success' : 'alert alert-warning'">
 
-            # Non Break Space
-            <td>&nbsp;</td>
+            <td>
+                <div class="btn btn-group-sm" role="group">
+                    <a class="btn btn-info" th:href="@{/edit/{id}(id=${item.id})}">
+                        <i class="bi bi-pencil-fill"></i>
+                        Editar
+                    </a>
+                    <a class="btn btn-danger" th:href="@{/delete/{id}(id=${item.id})}">
+                        <i class="bi bi-trash-fill"></i>
+                        Deletar
+                    </a>
+                </div>
+            </td>
+
             <td th:text="${item.id}"></td>
             <td th:text="${item.description}"></td>
             <td>
-                <span th:if="${item.isComplete} == true" th:text="Completo"/>
-                <span th:unless="${item.isComplete} == true" th:text=""/>
+                <span th:if="${item.isComplete} == true" th:text="Yes" />
+                <span th:unless="${item.isComplete} == true" th:text="No" />
             </td>
             <td th:text="${item.createdAt}"></td>
             <td th:text="${item.updatedAt}"></td>
