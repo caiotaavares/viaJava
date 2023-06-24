@@ -46,4 +46,28 @@ public class ControllerTodoForm {
 
         return "redirect:/";
     }
+
+    @GetMapping("/edit/{id}")
+    public String showUpdateForm(@PathVariable("id") Long id, org.springframework.ui.Model model) {
+
+        ItemTodo item = itemService.getById(id)
+                .orElseThrow(() -> new IllegalArgumentException("TodoItem id: " + id + " not found"));
+
+        model.addAttribute("todo", item);
+        return "edit-item";
+    }
+
+    @PostMapping("/todo/{id}")
+    public String updateTodoItem(@PathVariable("id") Long id, @Valid ItemTodo itemTodo, BindingResult result, org.springframework.ui.Model model) {
+
+        ItemTodo item = itemService.getById(id)
+                .orElseThrow(() -> new IllegalArgumentException("TodoItem id: " + id + " not found"));
+
+        item.setIsComplete(itemTodo.getIsComplete());
+        item.setDescription(itemTodo.getDescription());
+
+        itemService.save(item);
+
+        return "redirect:/";
+    }
 }
