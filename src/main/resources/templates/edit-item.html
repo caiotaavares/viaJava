@@ -95,22 +95,45 @@
   <div class="row mt-5">
     <div class="col-2">
       <p><a class="btn btn-outline-success" href="/">
-        <i class="bi bi-arrow-left-square-fill"></i> Back</a>
+        <i class="bi bi-arrow-left-square-fill"></i> Voltar </a>
       </p>
     </div>
     <div class="col-6">
-      <h2>Edit Todo Item</h2>
+      <h2> Editar Item </h2>
       <form class="row g-3" action="#" th:action="@{/todo/{id}(id=${todo.id})}" th:object="${todo}" method="POST">
         <div class="form-group">
           <div class="col-6">
-            <label for="description">Description</label>
+            <label for="name"> Nome </label>
+            <input class="form-control"
+                   type="text"
+                   th:field="*{name}"
+                   id="name"
+                   placeholder="Nome"
+            >
+
+            <label for="departure"> Partida </label>
+            <input class="form-control"
+                   type="datetime-local"
+                   th:field="*{departure}"
+                   id="departure"
+                   placeholder="Data de partida"
+            >
+
+            <label for="arrival"> Chegada </label>
+            <input class="form-control"
+                   type="datetime-local"
+                   th:field="*{arrival}"
+                   id="arrival"
+                   placeholder="Data de chegada"
+            >
+
+            <label for="description"> Descrição </label>
             <input class="form-control"
                    type="text"
                    th:field="*{description}"
                    id="description"
                    placeholder="Description"
             >
-          </div>
           <div class="col-6 form-check">
             <input class="form-check-input"
                    type="checkbox"
@@ -126,7 +149,7 @@
           <input type="hidden" th:field="*{updatedAt}" />
 
           <button type="submit" class="btn btn-outline-success">
-            <i class="bi bi-plus-square-fill"></i> Update
+            <i class="bi bi-plus-square-fill"></i> Salvar
           </button>
 
         </div>

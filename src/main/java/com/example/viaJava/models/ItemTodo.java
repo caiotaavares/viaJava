@@ -8,6 +8,9 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -18,6 +21,14 @@ public class ItemTodo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    private String name;
+    private LocalDateTime departure;
+    private LocalDateTime arrival;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "item_todo_id")
+    private List<Task> tasks = null;
 
     @NotBlank(message = "É necessário uma descrição!")
     private String description;

@@ -94,15 +94,39 @@
 
   <div class="row mt-5">
     <div class="col-2">
-      <p><a class="btn btn-outline-success" href="/">
+      <p><a class="btn btn-outline-success" href="/home">
         <i class="bi bi-arrow-left-square-fill"></i> Back</a>
       </p>
     </div>
     <div class="col-6">
-      <h2>Add a new Todo Item</h2>
+      <h2> Adicionar Item </h2>
       <form action="#" th:action="@{/todo}" th:object="${itemTodo}" method="POST">
         <div class="form-group">
-          <label for="description">Description</label>
+          <label for="name"> Nome </label>
+          <input class="form-control"
+                 type="text"
+                 th:field="*{name}"
+                 id="name"
+                 placeholder="Nome"
+          >
+
+          <label for="departure"> Partida </label>
+          <input class="form-control"
+                 type="datetime-local"
+                 th:field="*{departure}"
+                 id="departure"
+                 placeholder="Nome"
+          >
+
+          <label for="arrival"> Chegada </label>
+          <input class="form-control"
+                 type="datetime-local"
+                 th:field="*{arrival}"
+                 id="arrival"
+                 placeholder="Nome"
+          >
+
+          <label for="description"> Descrição </label>
           <input class="form-control"
                  type="text"
                  th:field="*{description}"
@@ -111,7 +135,7 @@
           >
 
           <button type="submit" class="btn btn-outline-success">
-            <i class="bi bi-plus-square-fill"></i> Add Todo
+            <i class="bi bi-plus-square-fill"></i> Adicionar
           </button>
 
         </div>

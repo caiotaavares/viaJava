@@ -37,9 +37,9 @@ public class ControllerUser {
 
         if (userLogin !=  null) {
             return "redirect:/home";
+        } else {
+            return "redirect:/";
         }
-
-        return null;
     }
     @GetMapping("/home")
     public ModelAndView home() {
