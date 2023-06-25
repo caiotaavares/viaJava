@@ -5,9 +5,93 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}" />
+  <style>
+    .center-align {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    body {
+      background-color: #282a36;
+      color: #f8f8f2;
+    }
+
+    .container {
+      background-color: #282a36;
+      color: #f8f8f2;
+    }
+
+    .center-align {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #50fa7b;
+    }
+
+    .btn-info {
+      background-color: #8be9fd;
+      color: #282a36;
+    }
+
+    .btn-danger {
+      background-color: #ff5555;
+      color: #282a36;
+    }
+
+    .bi-pencil-fill,
+    .bi-trash3-fill,
+    .bi-check-square-fill,
+    .bi-x-square-fill,
+    .bi-plus-square-fill {
+      color: #bd93f9;
+    }
+
+    .btn-outline-success {
+      border-color: #50fa7b;
+      color: #50fa7b;
+    }
+    html,
+    body,
+    .intro {
+      height: 100%;
+    }
+
+    .gradient-custom-2 {
+      /* fallback for old browsers */
+      background: #6a11cb;
+
+      /* Chrome 10-25, Safari 5.1-6 */
+      background: -webkit-linear-gradient(to top, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+
+      /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      background: linear-gradient(to top, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+    }
+
+    table td,
+    table th {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    thead th,
+    tbody th {
+      color: #fff;
+    }
+
+    tbody td {
+      font-weight: 500;
+      color: rgba(255,255,255,.65);
+    }
+  </style>
 </head>
 <body>
 <div class="container">
+  <h1 class="center-align" >viaJava</h1>
+
+  <hr/>
+
   <div class="row mt-5">
     <div class="col-2">
       <p><a class="btn btn-outline-success" href="/">
