@@ -33,7 +33,7 @@ public class ControllerTodoForm {
 
         itemService.save(item);
 
-        return "redirect:/";
+        return "redirect:/home";
     }
 
     @GetMapping("/delete/{id}")
@@ -44,7 +44,7 @@ public class ControllerTodoForm {
 
         itemService.delete(item);
 
-        return "redirect:/";
+        return "redirect:/home";
     }
 
     @GetMapping("/edit/{id}")
@@ -68,6 +68,6 @@ public class ControllerTodoForm {
 
         itemService.save(item);
 
-        return "redirect:/";
+        return "redirect:/home";
     }
 }
