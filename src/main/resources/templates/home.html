@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}"/>
+    <title>viaJava</title>
+    <style>
+        .center-align {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        body {
+            background-color: #282a36;
+            color: #f8f8f2;
+        }
+
+        .container {
+            background-color: #282a36;
+            color: #f8f8f2;
+        }
+
+        .center-align {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #50fa7b;
+        }
+
+        .btn-info {
+            background-color: #8be9fd;
+            color: #282a36;
+        }
+
+        .btn-danger {
+            background-color: #ff5555;
+            color: #282a36;
+        }
+
+        /*.bi-pencil-fill,*/
+        /*.bi-trash3-fill,*/
+        /*.bi-check-square-fill,*/
+        /*.bi-x-square-fill,*/
+        /*.bi-plus-square-fill {*/
+        /*    color: #bd93f9;*/
+        /*}*/
+
+        .btn-outline-success {
+            border-color: #50fa7b;
+            color: #50fa7b;
+        }
+        html,
+        body,
+        .intro {
+            height: 100%;
+        }
+
+        .gradient-custom-2 {
+            /* fallback for old browsers */
+            background: #6a11cb;
+
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: -webkit-linear-gradient(to top, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background: linear-gradient(to top, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+        }
+
+        table td,
+        table th {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        thead th,
+        tbody th {
+            color: #fff;
+        }
+
+        tbody td {
+            font-weight: 500;
+            color: rgba(255,255,255,.65);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="center-align" >viaJava</h1>
+
+    <hr/>
+
+    <section class="intro">
+        <div class="gradient-custom-2 h-100">
+            <div class="mask d-flex align-items-center h-100">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-12">
+                            <div class="table-responsive">
+                                <table class="table table-dark table-bordered mb-0">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col" >Ações</th>
+                                        <th scope="col" >Id</th>
+                                        <th scope="col" >Descição</th>
+                                        <th scope="col" >Estado</th>
+                                        <th scope="col" >Criado</th>
+                                        <th scope="col" >Editado</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="item : ${todoItems}" th:class="${item.isComplete} ? 'alert alert-success' : 'alert alert-warning'">
+
+                                        <td>
+                                            <div class="btn btn-group-sm" role="group">
+                                                <a class="btn btn-info" th:href="@{/edit/{id}(id=${item.id})}">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                                                        <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+                                                    </svg>
+                                                </a>
+                                                <a class="btn btn-danger" th:href="@{/delete/{id}(id=${item.id})}">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                                                        <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </td>
+
+                                        <td th:text="${item.id}"></td>
+                                        <td th:text="${item.description}"></td>
+                                        <td>
+                                            <span th:if="${item.isComplete} == true">
+                                              <svg style="color: green" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-check-square-fill" viewBox="0 0 16 16">
+                                                <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm10.03 4.97a.75.75 0 0 1 .011 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.75.75 0 0 1 1.08-.022z"/>
+                                              </svg>
+                                            </span>
+
+                                            <span th:unless="${item.isComplete} == true">
+                                                <svg style="color: red" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-x-square-fill" viewBox="0 0 16 16">
+                                                  <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z"/>
+                                                </svg>
+                                            </span>
+                                        </td>
+                                        <td th:text="${#dates.format(item.createdAt, 'dd/MM/yyyy HH:mm:ss')}"></td>
+                                        <td th:text="${#dates.format(item.updatedAt, 'dd/MM/yyyy HH:mm:ss')}"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <p>
+        <a class="btn btn-outline-success" href="/create-todo">
+        <i class="bi bi-plus-square-fill"></i> Criar Card </a>
+    </p>
+</div>
+<script th:src="@{/webjars/bootstrap/5.2.2/js/bootstrap.min.js}"></script>
+</body>
+</html>

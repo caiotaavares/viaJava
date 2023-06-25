@@ -1,10 +1,13 @@
 package com.example.viaJava.controllers;
 
+import com.example.viaJava.models.ItemTodo;
+import com.example.viaJava.models.User;
 import com.example.viaJava.services.ItemTodoServices;
+import com.example.viaJava.services.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ControllerHome {
@@ -12,10 +15,18 @@ public class ControllerHome {
     @Autowired
     private ItemTodoServices itemService;
 
+    @Autowired
+    private UserServices userServices;
+
+//    @Autowired
+//    public ControllerHome(ItemTodoServices itemService, UserServices userServices) {
+//        this.itemService = itemService;
+//        this.userServices = userServices;
+//    }
+
     @GetMapping("/")
-    public ModelAndView index() {
-        ModelAndView modelAndView = new ModelAndView("index");
-        modelAndView.addObject("todoItems", itemService.getAll());
-        return modelAndView;
+    public String index(Model model) {
+        model.addAttribute("user", new User());
+        return "index";
     }
 }
