@@ -6,6 +6,11 @@ import lombok.Setter;
 
 import java.time.Instant;
 
+/**
+ * Classe base dos Usuários
+ * apresenta os métodos e comportamentos
+ * necessários para o funcionamento dos usuários
+ */
 @Getter
 @Setter
 @Entity

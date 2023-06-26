@@ -9,6 +9,10 @@ import java.time.Instant;
 
 import static com.example.viaJava.helpers.helpers.encryptPassword;
 
+/**
+ * Lógica de negócio e comunicação com
+ * o banco de Usuários
+ */
 @Service
 public class UserServices {
 

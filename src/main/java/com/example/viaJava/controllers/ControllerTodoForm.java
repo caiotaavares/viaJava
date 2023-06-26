@@ -17,6 +17,10 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 
+/**
+ * Controlador do formulário ToDo
+ * realiza inserção, remoção, edição e busca
+ */
 @Controller
 public class ControllerTodoForm {
 
