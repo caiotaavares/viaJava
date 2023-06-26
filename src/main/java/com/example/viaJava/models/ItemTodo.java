@@ -24,7 +24,10 @@ public class ItemTodo implements Serializable {
 
     private String name;
     private LocalDateTime departure;
+    private Integer departurePrice;
     private LocalDateTime arrival;
+    private LocalDateTime returnDate;
+    private Integer returnPrice;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "item_todo_id")
@@ -35,6 +38,9 @@ public class ItemTodo implements Serializable {
     private Boolean isComplete = false;
     private Instant createdAt;
     private Instant updatedAt;
+    private Integer hostingPrice;
+
+    private Integer totalPrice;
 
     @Override
     public String toString() {

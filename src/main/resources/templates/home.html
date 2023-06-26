@@ -104,13 +104,16 @@
                                     <thead>
                                     <tr>
                                         <th scope="col" >Ações</th>
-                                        <th scope="col" >Id</th>
+                                        <th scope="col" >País</th>
                                         <th scope="col" >Descição</th>
                                         <th scope="col" >Estado</th>
-                                        <th scope="col" >Partida</th>
+                                        <th scope="col" >Reserva de ida</th>
+                                        <th scope="col" >Preço da reserva de ida</th>
                                         <th scope="col" >Chegada</th>
+                                        <th scope="col" >Reserva de volta</th>
+                                        <th scope="col" >Preço da reserva de volta</th>
                                         <th scope="col" >Criado</th>
-                                        <th scope="col" >Editado</th>
+                                        <th scope="col">Custo Total</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -131,7 +134,7 @@
                                             </div>
                                         </td>
 
-                                        <td th:text="${item.id}"></td>
+                                        <td th:text="${item.name}"></td>
                                         <td th:text="${item.description}"></td>
                                         <td>
                                             <span th:if="${item.isComplete} == true">
@@ -147,9 +150,12 @@
                                             </span>
                                         </td>
                                         <td th:text="${#temporals.format(item.departure, 'dd/MM/yyyy HH:mm:ss')}"></td>
+                                        <td th:text="${item.departurePrice}"></td>
                                         <td th:text="${#temporals.format(item.arrival, 'dd/MM/yyyy HH:mm:ss')}"></td>
+                                        <td th:text="${#temporals.format(item.returnDate, 'dd/MM/yyyy HH:mm:ss')}"></td>
+                                        <td th:text="${item.returnPrice}"></td>
                                         <td th:text="${#dates.format(item.createdAt, 'dd/MM/yyyy HH:mm:ss')}"></td>
-                                        <td th:text="${#dates.format(item.updatedAt, 'dd/MM/yyyy HH:mm:ss')}"></td>
+                                        <td th:text="${item.totalPrice}"></td>
                                     </tr>
                                 </tbody>
                             </table>

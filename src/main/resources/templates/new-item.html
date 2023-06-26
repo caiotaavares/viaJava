@@ -102,36 +102,103 @@
       <h2> Adicionar Item </h2>
       <form action="#" th:action="@{/todo}" th:object="${itemTodo}" method="POST">
         <div class="form-group">
-          <label for="name"> Nome </label>
-          <input class="form-control"
-                 type="text"
-                 th:field="*{name}"
-                 id="name"
-                 placeholder="Nome"
-          >
+<!--          <label for="name"> País </label>-->
+<!--          <input class="form-control required"-->
+<!--                 type="text"-->
+<!--                 th:field="*{name}"-->
+<!--                 id="name"-->
+<!--                 placeholder="Nome"-->
+<!--                 required-->
+<!--          >-->
 
-          <label for="departure"> Partida </label>
-          <input class="form-control"
+          <label for="name">País</label>
+          <select class="form-control required"
+                  id="name"
+                  name="name"
+                  required
+          >
+            <option value="">Selecione um país</option>
+            <option th:each="country : ${countries}" th:value="${country}" th:text="${country}"></option>
+          </select>
+
+          <hr/>
+
+          <label for="departure"> Data de partida </label>
+          <input class="form-control required"
                  type="datetime-local"
                  th:field="*{departure}"
                  id="departure"
-                 placeholder="Nome"
+                 placeholder="Data de partida"
+                 required
           >
 
+          <label for="departurePrice"> Custo </label>
+          <input class="form-control required"
+                 type="text"
+                 pattern="[0-9]*"
+                 inputmode="numeric"
+                 th:field="*{departurePrice}"
+                 id="departurePrice"
+                 placeholder="Price"
+                 oninput="formatPrice(this)"
+                 required
+          >
+
+          <hr/>
+
           <label for="arrival"> Chegada </label>
-          <input class="form-control"
+          <input class="form-control required"
                  type="datetime-local"
                  th:field="*{arrival}"
                  id="arrival"
                  placeholder="Nome"
+                 required
+          >
+
+          <hr/>
+
+          <label for="returnDate"> Data de retorno </label>
+          <input class="form-control required"
+                 type="datetime-local"
+                 th:field="*{returnDate}"
+                 id="returnDate"
+                 placeholder="Nome"
+                 required
+          >
+
+          <label for="returnPrice"> Custo </label>
+          <input class="form-control required"
+                 type="text"
+                 pattern="[0-9]*"
+                 inputmode="numeric"
+                 th:field="*{returnPrice}"
+                 id="returnPrice"
+                 placeholder="Price"
+                 oninput="formatPrice(this)"
+                 required
+          >
+
+          <hr/>
+
+          <label for="hostingPrice"> Custo das acomodações </label>
+          <input class="form-control required"
+                 type="text"
+                 pattern="[0-9]*"
+                 inputmode="numeric"
+                 th:field="*{hostingPrice}"
+                 id="hostingPrice"
+                 placeholder="Price"
+                 oninput="formatPrice(this)"
+                 required
           >
 
           <label for="description"> Descrição </label>
-          <input class="form-control"
+          <input class="form-control required"
                  type="text"
                  th:field="*{description}"
                  id="description"
                  placeholder="Description"
+                 required
           >
 
           <button type="submit" class="btn btn-outline-success">
@@ -145,5 +212,6 @@
 
 </div>
 <script th:src="@{/webjars/bootstrap/5.2.2/js/bootstrap.min.js}"></script>
+<script src="https://unpkg.com/countriesjs/dist/countries.min.js"></script>
 </body>
 </html>
