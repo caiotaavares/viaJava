@@ -12,6 +12,11 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe base para os cards ToDo
+ * apresenta os métodos e comportamentos
+ * necessários para o funcionamento dos cards
+ */
 @Getter
 @Setter
 @Entity

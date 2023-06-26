@@ -3,6 +3,9 @@ package com.example.viaJava.helpers;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * Funções genéricas e de auxílio
+ */
 public class helpers {
 
     public static String encryptPassword(String password) {
