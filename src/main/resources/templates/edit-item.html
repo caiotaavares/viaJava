@@ -94,23 +94,118 @@
 
   <div class="row mt-5">
     <div class="col-2">
-      <p><a class="btn btn-outline-success" href="/">
-        <i class="bi bi-arrow-left-square-fill"></i> Back</a>
+      <p><a class="btn btn-outline-success" href="/home">
+        <i class="bi bi-arrow-left-square-fill"></i> Voltar </a>
       </p>
     </div>
     <div class="col-6">
-      <h2>Edit Todo Item</h2>
+      <h2> Editar Item </h2>
       <form class="row g-3" action="#" th:action="@{/todo/{id}(id=${todo.id})}" th:object="${todo}" method="POST">
         <div class="form-group">
           <div class="col-6">
-            <label for="description">Description</label>
+
+<!--            <label for="name"> País </label>-->
+<!--            <input class="form-control required"-->
+<!--                   type="text"-->
+<!--                   th:field="*{name}"-->
+<!--                   id="name"-->
+<!--                   placeholder="Nome"-->
+<!--                   required-->
+<!--            >-->
+
+            <label for="name">País</label>
+            <select class="form-control required"
+                    id="name"
+                    name="name"
+                    required
+            >
+              <option value="">Selecione um país</option>
+              <option th:each="country : ${countries}" th:value="${country}" th:text="${country}"></option>
+            </select>
+
+            <hr/>
+
+            <label for="departure"> Data de partida </label>
             <input class="form-control"
+                   type="datetime-local"
+
+                   th:value="${todo.departure != null ? #temporals.format(todo.departure, 'dd/MM/yyyy HH:mm:ss') : ''}"
+                   id="departure"
+                   placeholder="Data de partida"
+
+            >
+
+            <label for="departurePrice"> Custo </label>
+            <input class="form-control required"
+                   type="text"
+                   pattern="[0-9]*"
+                   inputmode="numeric"
+                   th:field="*{departurePrice}"
+                   id="departurePrice"
+                   placeholder="Price"
+                   oninput="formatPrice(this)"
+                   required
+            >
+
+            <hr/>
+
+            <label for="arrival"> Chegada </label>
+            <input class="form-control"
+                   type="datetime-local"
+
+                   th:value="${todo.arrival != null ? #temporals.format(todo.arrival, 'dd/MM/yyyy HH:mm:ss') : ''}"
+                   id="arrival"
+                   placeholder="Nome"
+
+            >
+
+            <hr/>
+
+            <label for="returnDate"> Data de retorno </label>
+            <input class="form-control"
+                   type="datetime-local"
+
+                   th:value="${todo.returnDate != null ? #temporals.format(todo.returnDate, 'dd/MM/yyyy HH:mm:ss') : ''}"
+                   id="returnDate"
+                   placeholder="Nome"
+
+            >
+
+            <label for="returnPrice"> Custo </label>
+            <input class="form-control required"
+                   type="text"
+                   pattern="[0-9]*"
+                   inputmode="numeric"
+                   th:field="*{returnPrice}"
+                   id="returnPrice"
+                   placeholder="Price"
+                   oninput="formatPrice(this)"
+                   required
+            >
+
+            <hr/>
+
+            <label for="hostingPrice"> Custo das acomodações </label>
+            <input class="form-control required"
+                   type="text"
+                   pattern="[0-9]*"
+                   inputmode="numeric"
+                   th:field="*{hostingPrice}"
+                   id="hostingPrice"
+                   placeholder="Price"
+                   oninput="formatPrice(this)"
+                   required
+            >
+
+            <label for="description"> Descrição </label>
+            <input class="form-control required"
                    type="text"
                    th:field="*{description}"
                    id="description"
                    placeholder="Description"
+                   required
             >
-          </div>
+
           <div class="col-6 form-check">
             <input class="form-check-input"
                    type="checkbox"
@@ -118,7 +213,7 @@
                    th:field="*{isComplete}"
                    th:checked="${isComplete} == true">
             <label class="form-check-label" for="inputIsComplete">
-              Completed?
+              Completar
             </label>
           </div>
 
@@ -126,7 +221,7 @@
           <input type="hidden" th:field="*{updatedAt}" />
 
           <button type="submit" class="btn btn-outline-success">
-            <i class="bi bi-plus-square-fill"></i> Update
+            <i class="bi bi-plus-square-fill"></i> Salvar
           </button>
 
         </div>
